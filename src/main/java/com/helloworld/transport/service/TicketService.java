@@ -1,5 +1,6 @@
 package com.helloworld.transport.service;
 
+import com.helloworld.transport.Entity.Passenger;
 import com.helloworld.transport.Entity.Ticket;
 
 /**
@@ -12,7 +13,7 @@ public interface TicketService {
     /**
      * 生成票据
      *
-     * @param ticket
+     * @param passenger
      */
-    void save(Ticket ticket);
+    void save(Passenger passenger);
 }
