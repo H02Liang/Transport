@@ -1,8 +1,8 @@
 package com.helloworld.transport.service.impl;
 
-import com.helloworld.transport.Entity.Passenger;
-import com.helloworld.transport.Entity.Ticket;
-import com.helloworld.transport.repository.TicketRepository;
+import com.helloworld.transport.entity.Passenger;
+import com.helloworld.transport.entity.Ticket;
+import com.helloworld.transport.repository.TicketDAO;
 import com.helloworld.transport.service.TicketService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,7 +21,7 @@ import java.util.Date;
 public class TicketServiceImpl implements TicketService {
 
     @Autowired
-    private TicketRepository ticketRepository;
+    private TicketDAO ticketDAO;
 
     /**
      * 生成票据
@@ -38,10 +38,14 @@ public class TicketServiceImpl implements TicketService {
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        ticket.setPassengerName(passenger.getName())
-                .setPassengerICNum(passenger.getIdCardNum()).setDepart("廉江永兴").setArrive("最近的小巷子")
+        ticket.setPassengerId(passenger.getId()).setDepart("廉江永兴").setArrive("最近的小巷子")
                 .setDeptTime(deptTime)
                 .setPrice(600).setRemarks("玉林。。。").setCreateTime(date).setUpdateTime(date);
-        ticketRepository.save(ticket);
+        ticketDAO.save(ticket);
+    }
+
+    @Override
+    public Ticket queryById(int id) {
+        return ticketDAO.findById(id).get();
     }
 }

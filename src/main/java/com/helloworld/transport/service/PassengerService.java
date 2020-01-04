@@ -1,6 +1,6 @@
 package com.helloworld.transport.service;
 
-import com.helloworld.transport.Entity.Passenger;
+import com.helloworld.transport.entity.Passenger;
 
 import java.util.List;
 
@@ -14,7 +14,7 @@ public interface PassengerService {
     /**
      * 添加乘客信息
      */
-    void save();
+    void save(Passenger passenger);
 
     /**
      * 删除乘客信息

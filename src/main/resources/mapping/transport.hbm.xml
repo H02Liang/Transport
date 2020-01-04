@@ -3,9 +3,9 @@
         "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
         "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <!--指定DAO的包路径-->
-<hibernate-mapping package="com.helloworld.transport.Entity">
+<hibernate-mapping package="com.helloworld.transport.entity">
     <!--默认生成表名，可以使用table属性指定表名-->
-    <class name="com.helloworld.transport.Entity.Passenger">
+    <class name="com.helloworld.transport.entity.Passenger">
         <id name="id">
             <!--主键自动增长-->
             <generator class="native"/>

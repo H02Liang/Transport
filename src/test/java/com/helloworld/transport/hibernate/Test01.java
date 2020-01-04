@@ -1,6 +1,6 @@
 package com.helloworld.transport.hibernate;
 
-import com.helloworld.transport.Entity.Passenger;
+import com.helloworld.transport.entity.Passenger;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -33,7 +33,7 @@ public class Test01 {
             Passenger passenger = new Passenger();
             Date date = new Date();
             passenger.setName("美洋洋").setAge(18).setSex(1)
-                    .setVipRank(5).setAddress("大森林").setRemarks("眉飞色舞")
+                    .setAddress("大森林").setRemarks("眉飞色舞")
                     .setCreateTime(date).setUpdateTime(date);
             transaction = session.beginTransaction();
             session.save(passenger);

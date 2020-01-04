@@ -1,7 +1,7 @@
 package com.helloworld.transport.service.impl;
 
-import com.helloworld.transport.Entity.Passenger;
-import com.helloworld.transport.repository.PassengerRepository;
+import com.helloworld.transport.entity.Passenger;
+import com.helloworld.transport.repository.PassengerDAO;
 import com.helloworld.transport.service.PassengerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,35 +19,33 @@ import java.util.List;
 public class PassengerServiceImpl implements PassengerService {
 
     @Autowired
-    private PassengerRepository passengerRepository;
+    private PassengerDAO passengerDAO;
 
     @Override
-    public void save() {
-        Passenger passenger = new Passenger();
+    public void save(Passenger passenger) {
         Date date = new Date();
-        passenger.setName("张安光").setIdCardNum("440881199510192341").setSex(0).setAge(28).setVipRank(8)
-                .setAddress("廉江永兴100栋5楼").setRemarks("性情豪爽、乐观积极").setCreateTime(date).setUpdateTime(date);
-        passengerRepository.save(passenger);
+        passenger.setCreateTime(date).setUpdateTime(date);
+        passengerDAO.save(passenger);
     }
 
     @Override
     public void del(Passenger passenger) {
-        passengerRepository.delete(passenger);
+        passengerDAO.delete(passenger);
     }
 
     @Override
     public List<Passenger> query() {
-        List<Passenger> passengerList = passengerRepository.findAll();
+        List<Passenger> passengerList = passengerDAO.findAll();
         return passengerList;
     }
 
     @Override
     public Passenger queryById(int id) {
-        return passengerRepository.findById(id).get();
+        return passengerDAO.findById(id).get();
     }
 
     @Override
     public void update(Passenger passenger) {
-        passengerRepository.save(passenger);
+        passengerDAO.save(passenger);
     }
 }
